@@ -1,0 +1,13 @@
+# Netlify configuration for Darkness Descending.
+# This is a zero-build static site: the repository root is published as-is.
+
+[build]
+  # No build step — serve the static files directly.
+  command = ""
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
