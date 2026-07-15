@@ -15,15 +15,19 @@ python3 -m http.server 8000
 (A plain static server is needed rather than opening `index.html` directly,
 because the game loads ES modules.)
 
-## Deploy to Netlify
+## Deploy to GitHub Pages
 
-The repo is Netlify-ready via [`netlify.toml`](./netlify.toml):
+The repo deploys to GitHub Pages automatically via
+[`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml):
+every push to `main` publishes the repository root as-is (no build step).
 
-- **Build command:** none
-- **Publish directory:** `.` (the repository root)
+One-time setup, if the first workflow run doesn't enable it automatically:
+in the repository's **Settings → Pages**, set **Source** to
+**GitHub Actions**.
 
-Connect the repository in Netlify (or drag-and-drop the folder), and it
-deploys as-is.
+The site is served at
+`https://<username>.github.io/Darkness-Descending-/`. All asset paths in
+the app are relative, so it works from that subpath without changes.
 
 ## Current features
 
@@ -38,7 +42,8 @@ deploys as-is.
 
 ```
 index.html            App shell
-netlify.toml          Netlify (static) deploy config
+.github/workflows/
+  deploy-pages.yml    GitHub Pages deploy workflow
 src/
   main.js             App entry + character-creation UI
   style.css           Dark-fantasy theme
