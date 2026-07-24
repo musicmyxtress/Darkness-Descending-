@@ -228,9 +228,21 @@ body {
 
 .stat {
   display: grid;
-  grid-template-columns: 68px 1fr 28px;
+  grid-template-columns: 84px 1fr 52px;
   align-items: center;
   gap: 0.75rem;
+}
+
+.stat--bonus .stat__label {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.stat__bonus-note {
+  margin-left: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
 }
 
 .stat__label {
@@ -259,6 +271,11 @@ body {
   color: var(--text);
 }
 
+.detail__desc--sub {
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+
 .detail__materials {
   color: var(--text-dim);
 }
@@ -279,6 +296,172 @@ body {
   border-radius: 999px;
 }
 
+/* ---------- Stat allocation ---------- */
+
+.alloc-remaining {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.alloc-remaining__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.alloc-remaining__pips {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.pip {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border);
+}
+
+.pip--full {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+}
+
+.alloc-remaining__count {
+  margin-left: auto;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+
+.alloc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.alloc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.alloc--bonus {
+  border-color: rgba(224, 184, 114, 0.45);
+}
+
+.alloc__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.alloc__name {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.alloc__abbr {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.alloc__class-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.12rem 0.5rem;
+  color: var(--gold);
+  background: rgba(224, 184, 114, 0.12);
+  border: 1px solid rgba(224, 184, 114, 0.3);
+  border-radius: 999px;
+}
+
+.alloc__desc {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.alloc__derived {
+  color: var(--text-faint);
+}
+
+.alloc__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.alloc__btn {
+  width: 38px;
+  height: 38px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, opacity 0.15s;
+}
+
+.alloc__btn:hover:not(:disabled) {
+  border-color: var(--border-glow);
+  background: rgba(139, 92, 246, 0.25);
+}
+
+.alloc__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.alloc__value {
+  min-width: 3.2rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.alloc__added {
+  margin-left: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--gold);
+}
+
+@media (max-width: 540px) {
+  .alloc {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .alloc__controls {
+    justify-content: center;
+  }
+}
+
 /* Footer / begin */
 
 .creation__footer {
@@ -287,6 +470,13 @@ body {
   align-items: center;
   gap: 0.85rem;
   padding-bottom: 1rem;
+}
+
+.creation__actions {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .creation__hint {
@@ -385,6 +575,17 @@ body {
   margin: 0 0 1.2rem;
   color: var(--text-dim);
   line-height: 1.6;
+}
+
+.start__desc--small {
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.start__stats {
+  margin: 0 auto 1.2rem;
+  max-width: 360px;
+  text-align: left;
 }
 
 .start__todo {
